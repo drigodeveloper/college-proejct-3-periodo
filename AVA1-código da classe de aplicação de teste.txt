@@ -1,0 +1,46 @@
+
+package computador;
+
+import java.util.Scanner;
+
+public class AplicacaoTeste {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        Computador[] computadores = new Computador[4];
+
+        for (int i = 0; i < 4; i++) {
+            System.out.println("Computador #" + (i + 1));
+            System.out.print("Digite a marca: ");
+            String marca = scanner.nextLine();
+
+            System.out.print("Digite o modelo: ");
+            String modelo = scanner.nextLine();
+
+            System.out.print("Digite o ano: ");
+            int ano = scanner.nextInt();
+            scanner.nextLine(); // Limpar o buffer
+
+            System.out.print("Digite o preço: ");
+            double preco = scanner.nextDouble();
+            scanner.nextLine(); // Limpar o buffer
+
+            System.out.print("O computador está ligado? (true/false): ");
+            boolean ligado = scanner.nextBoolean();
+            scanner.nextLine(); // Limpar o buffer
+
+            if (i < 2) {
+                computadores[i] = new Computador(); // Usar construtor default
+            } else {
+                computadores[i] = new Computador(marca, modelo, ano, preco, ligado); // Usar construtor com parâmetros
+            }
+        }
+
+        scanner.close();
+
+        for (Computador computador : computadores) {
+            computador.imprimir();
+        }
+    }
+}
+
